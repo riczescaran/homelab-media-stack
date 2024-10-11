@@ -80,7 +80,7 @@ ___
     * Add API key from NZBGeek account
     * Categories: `Movies`
     * Tags: Leave blank
-4. Navigate to `Settings -> Download` Client and add Sabnzbd with the following configurations:
+4. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
     * Add API key from Sabnzbd configuration
     * Categories: `movies`
     * Tags: Leave blank
