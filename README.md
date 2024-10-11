@@ -14,6 +14,8 @@ Is this even legal? Downloading copyrighted material is illegal. However, downlo
     * [Eweka](https://www.eweka.nl/en) - Provider (Main)
     * [NewsDemon](https://www.newsdemon.com/) - Provider (Backup)
 
+If you want to expose the services to the internet under CGNAT, you can use [TailScale](https://tailscale.com/). It is a free service that allows you to create a private network between your devices. You can also use your custom domain by pointing it to the IP address of the machine running the services.
+
 ___
 
 ### Setup Sabnzbd
