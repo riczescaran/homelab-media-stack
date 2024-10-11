@@ -6,17 +6,17 @@ services:
     environment:
       - PUID=${PUID-1000}
       - PGID=${PGID-1000}
-      - TZ=${TZ-Asia/Manila}
+      - TZ=${TZ}
       - JELLYFIN_PublishedServerUrl=${JELLYFIN_PUBLISHED_URL} #optional
     volumes:
-      - jellyfin_config:${JELLYFIN_CONFIG_VOLUME}
-      - ${MOVIES_SOURCE_PATH}:${JELLYFIN_MOVIES_VOLUME}
-      - ${TV_SHOWS_SOURCE_PATH}:${JELLYFIN_TV_SHOWS_VOLUME}
+      - jellyfin_config:/config
+      - ${MOVIES_SOURCE_PATH}:/data/movies
+      - ${TV_SHOWS_SOURCE_PATH}:/data/tvshows
     ports:
       - 8096:8096
-      - 8920:8920 #optional
-      - 7359:7359/udp #optional
-      - 1900:1900/udp #optional
+      - 8920:8920 # Optional - Https webUI (you need to set up your own certificate).
+      - 7359:7359/udp # Optional - Allows clients to discover Jellyfin on the local network.
+      - 1900:1900/udp # Optional - Service discovery used by DNLA and clients.
     restart: unless-stopped
     networks:
       - default
@@ -27,7 +27,7 @@ services:
     hostname: jellyseerr
     environment:
       - LOG_LEVEL=debug
-      - TZ=${TZ-Asia/Manila}
+      - TZ=${TZ}
     ports:
       - 5055:5055
     volumes:
@@ -39,14 +39,15 @@ services:
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
+    hostname: radarr
     environment:
       - PUID=${PUID-1000}
       - PGID=${PGID-1000}
-      - TZ=${TZ-Asia/Manila}
+      - TZ=${TZ}
     volumes:
-      - radarr_config:${RADARR_CONFIG_VOLUME}
-      - ${DOWNLOADS_SOURCE_PATH}:${RADARR_DOWNLOADS_VOLUME}
-      - ${MOVIES_SOURCE_PATH}:${RADARR_MOVIES_VOLUME}
+      - radarr_config:/config
+      - ${DOWNLOADS_SOURCE_PATH}:/downloads
+      - ${MOVIES_SOURCE_PATH}:/movies
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -58,13 +59,13 @@ services:
     container_name: sonarr
     hostname: sonarr
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID-1000}
+      - PGID=${PGID-1000}
+      - TZ=${TZ}
     volumes:
       - sonarr_config:/config
-      - ${DOWNLOADS_SOURCE_PATH}:${SONARR_DOWNLOADS_VOLUME}
-      - ${TV_SHOWS_SOURCE_PATH}:${SONARR_TV_SHOWS_VOLUME}
+      - ${DOWNLOADS_SOURCE_PATH}:/downloads
+      - ${TV_SHOWS_SOURCE_PATH}:/tv
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -78,11 +79,11 @@ services:
     environment:
       - PUID=${PUID-1000}
       - PGID=${PGID-1000}
-      - TZ=${TZ-Asia/Manila}
+      - TZ=${TZ}
     volumes:
       - sabnzbd_config:/config
-      - ${DOWNLOADS_SOURCE_PATH}:${SABNZBD_DOWNLOADS_VOLUME}
-      - ${DOWNLOADS_SOURCE_PATH}/incomplete:${SABNZBD_INCOMPLETE_DOWNLOADS_VOLUME}
+      - ${DOWNLOADS_SOURCE_PATH}:/downloads
+      - ${DOWNLOADS_SOURCE_PATH}/incomplete:/incomplete-downloads
     ports:
       - 8080:8080
     restart: unless-stopped
@@ -95,7 +96,7 @@ volumes:
   radarr_config:
   sonarr_config:
   sabnzbd_config:
-  
+
 networks:
   default:
     name: ${PROXY_NETWORK_NAME}
