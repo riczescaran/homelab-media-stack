@@ -18,7 +18,30 @@ If you want to expose the services to the internet under CGNAT, you can use [Tai
 
 ___
 
-### Setup Sabnzbd
+## Running the services
+
+1. Create a new docker network using the following command:
+    ```bash
+    docker network create proxy_network
+    ```
+2. Run the following command to start the services:
+    ```bash
+    docker-compose up -d
+    ```
+3. Check if all the services are running using the following command:
+    ```bash
+    docker-compose ps
+    ```
+4. If all the services are running, you can access them using the following URLs:
+    * Jellyfin: `http://localhost:8096`
+    * Radarr: `http://localhost:7878`
+    * Sonarr: `http://localhost:8989`
+    * Sabnzbd: `http://localhost:8080`
+    * Jellyseerr: `http://localhost:5055`
+
+---
+
+## Setup Sabnzbd
 
 1. Open web browser and navigate to `http://localhost:8080`
 2. Fill in the required credentials using the Provider's account details
@@ -35,7 +58,7 @@ ___
 
 ---
 
-### Set up Radarr
+## Set up Radarr
 
 1. Open web browser and navigate to `http://localhost:7878`
 2. Navigate to `Settings -> Media Management` and add root folders for movies: `/movies`
@@ -50,7 +73,7 @@ ___
 
 ___
 
-### Set up Sonarr
+## Set up Sonarr
 
 1. Open web browser and navigate to `http://localhost:8989`
 2. Navigate to `Settings -> Media Management` and add root folders for TV shows: `/tv`
