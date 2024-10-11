@@ -81,7 +81,7 @@ services:
     volumes:
       - sabnzbd_config:/config
       - ${DOWNLOADS_SOURCE_PATH}:${SABNZBD_DOWNLOADS_VOLUME}
-      - ${DOWNLOADS_SOURCE_PATH}/incomplete:${SABNZBD_DOWNLOADS_VOLUME}/incomplete
+      - ${DOWNLOADS_SOURCE_PATH}/incomplete:${SABNZBD_INCOMPLETE_DOWNLOADS_VOLUME}
     ports:
       - 8080:8080
     restart: unless-stopped
