@@ -96,3 +96,20 @@ ___
 2. Choose Jellyfin as the media server
 3. Fill in the required details and press `Next`
 4. Add radarr and sonarr services. Fill in the required details and press `Next`
+
+## Screenshots
+
+### Jellyfin
+![Jellyfin](/screenshots/jellyfin.png)
+
+### Jellyseerr
+![Jellyseerr](/screenshots/jellyseerr.png)
+
+### Radarr
+![Radarr](/screenshots/radarr.png)
+
+### Sonarr
+![Sonarr](/screenshots/sonarr.png)
+
+### Sabnzbd
+![Sabnzbd](/screenshots/sabnzbd.png)
