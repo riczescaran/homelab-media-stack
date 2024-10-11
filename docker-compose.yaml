@@ -1,0 +1,101 @@
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    hostname: jellyfin
+    environment:
+      - PUID=${PUID-1000}
+      - PGID=${PGID-1000}
+      - TZ=${TZ-Asia/Manila}
+    volumes:
+      - jellyfin_config:${JELLYFIN_CONFIG_VOLUME}
+      - ${MOVIES_SOURCE_PATH}:${JELLYFIN_MOVIES_VOLUME}
+      - ${TV_SHOWS_SOURCE_PATH}:${JELLYFIN_TV_SHOWS_VOLUME}
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+    networks:
+      - default
+
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    hostname: jellyseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=${TZ-Asia/Manila}
+    ports:
+      - 5055:5055
+    volumes:
+      - jellyseerr_config:/app/config
+    restart: unless-stopped
+    networks:
+      - default
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=${PUID-1000}
+      - PGID=${PGID-1000}
+      - TZ=${TZ-Asia/Manila}
+    volumes:
+      - radarr_config:${RADARR_CONFIG_VOLUME}
+      - ${DOWNLOADS_SOURCE_PATH}:${RADARR_DOWNLOADS_VOLUME}
+      - ${MOVIES_SOURCE_PATH}:${RADARR_MOVIES_VOLUME}
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    networks:
+      - default
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    hostname: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - sonarr_config:/config
+      - ${DOWNLOADS_SOURCE_PATH}:${SONARR_DOWNLOADS_VOLUME}
+      - ${TV_SHOWS_SOURCE_PATH}:${SONARR_TV_SHOWS_VOLUME}
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    networks:
+      - default
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    hostname: sabnzbd
+    environment:
+      - PUID=${PUID-1000}
+      - PGID=${PGID-1000}
+      - TZ=${TZ-Asia/Manila}
+    volumes:
+      - sabnzbd_config:/config
+      - ${DOWNLOADS_SOURCE_PATH}:${SABNZBD_DOWNLOADS_VOLUME}
+      - ${DOWNLOADS_SOURCE_PATH}/incomplete:${SABNZBD_DOWNLOADS_VOLUME}/incomplete
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    networks:
+      - default
+
+volumes:
+  jellyfin_config:
+  jellyseerr_config:
+  radarr_config:
+  sonarr_config:
+  sabnzbd_config:
+  
+networks:
+  default:
+    name: ${PROXY_NETWORK_NAME}
+    external: true
