@@ -27,9 +27,7 @@ ___
 
 ---
 
-### Set up Radarr and Sonarr
-
-#### Radarr:
+### Set up Radarr
 
 1. Navigate to `Settings -> Media Management` and add root folders for movies: `/movies`
 2. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
@@ -41,7 +39,9 @@ ___
     * Categories: `movies`
     * Tags: Leave blank
 
-#### Sonarr:
+___
+
+### Set up Sonarr
 
 1. Navigate to `Settings -> Media Management` and add root folders for TV shows: `/tv`
 2. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
