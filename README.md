@@ -23,7 +23,12 @@ Downloading copyrighted material is illegal. However, downloading content that i
     * [Eweka](https://www.eweka.nl/en) - Provider (Main)
     * [NewsDemon](https://www.newsdemon.com/) - Provider (Backup)
 
-If you want to expose the services to the internet under CGNAT, you can use [TailScale](https://tailscale.com/). It is a free service that allows you to create a private network between your devices. You can also use your custom domain by pointing it to the IP address of the machine running the services.
+
+### Optional
+
+- If you want to expose the services to the internet under CGNAT, you can use [TailScale](https://tailscale.com/). It is a free service that allows you to create a private network between your devices. You can also use your custom domain by pointing it to the IP address of the machine running the services.
+
+- If you want to monitor your arr stack services using mobile app, you can use [LunaSea](https://lunasea.app/). It is a free app that allows you to monitor and manage your services from your mobile device.
 
 ___
 
