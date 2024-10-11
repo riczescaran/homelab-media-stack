@@ -11,6 +11,7 @@ services:
       - jellyfin_config:${JELLYFIN_CONFIG_VOLUME}
       - ${MOVIES_SOURCE_PATH}:${JELLYFIN_MOVIES_VOLUME}
       - ${TV_SHOWS_SOURCE_PATH}:${JELLYFIN_TV_SHOWS_VOLUME}
+      - JELLYFIN_PublishedServerUrl:${JELLYFIN_PUBLISHED_URL} #optional
     ports:
       - 8096:8096
       - 8920:8920 #optional
