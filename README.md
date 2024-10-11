@@ -29,12 +29,13 @@ ___
 
 ### Set up Radarr
 
-1. Navigate to `Settings -> Media Management` and add root folders for movies: `/movies`
-2. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
+1. Open web browser and navigate to `http://localhost:7878`
+2. Navigate to `Settings -> Media Management` and add root folders for movies: `/movies`
+3. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
     * Add API key from NZBGeek account
     * Categories: `Movies`
     * Tags: Leave blank
-3. Navigate to `Settings -> Download` Client and add Sabnzbd with the following configurations:
+4. Navigate to `Settings -> Download` Client and add Sabnzbd with the following configurations:
     * Add API key from Sabnzbd configuration
     * Categories: `movies`
     * Tags: Leave blank
@@ -43,13 +44,24 @@ ___
 
 ### Set up Sonarr
 
-1. Navigate to `Settings -> Media Management` and add root folders for TV shows: `/tv`
-2. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
+1. Open web browser and navigate to `http://localhost:8989`
+2. Navigate to `Settings -> Media Management` and add root folders for TV shows: `/tv`
+3. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
     * Add API key from NZBGeek account
     * Categories: `SD`, `HD`
     * Anime Categories: `SD`, `HD`, `Anime`
     * Tags: Leave blank
-3. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
+4. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
     * Category: `tv`
     * Add API key from Sabnzbd configuration
     * Tags: Leave blank
+
+
+---
+
+### Set up Jellyseerr
+
+1. Open web browser and navigate to `http://localhost:5055`
+2. Choose Jellyfin as the media server
+3. Fill in the required details and press `Next`
+4. Add radarr and sonarr services. Fill in the required details and press `Next`
