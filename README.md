@@ -8,27 +8,37 @@
     * [Eweka](https://www.eweka.nl/en) - Provider (Main)
     * [NewsDemon](https://www.newsdemon.com/) - Provider (Backup)
 
+___
+
 ### Setting up Radarr and Sonarr
 
-* Setup Download Client
-    * Radarr:
-        * NZBGeek (Indexer)
-            * Categories: `Movies`
-            * Tags: Leave blank
-        * Sabnzbd (Download Client)
-            * Categories: `movies`
-            * Tags: Leave blank
-    * Sonarr:
-        * NZBGeek (Indexer)
-            * Categories: `SD`, `HD`
-            * Anime Categories: `SD`, `HD`, `Anime`
-            * Tags: Leave blank
-        * Sabnzbd (Download Client)
-            * Category: `tv`
-            * Tags: Leave blank
+#### Radarr:
 
-* Setup Media Management root folders (Settings -> Media Management)
-    * Radarr:
-        * Movie Folder: `/movies`
-    * Sonarr:
-        * TV Folder: `/tv`
+* NZBGeek (Indexer)
+    * Categories: `Movies`
+    * Tags: Leave blank
+* Sabnzbd (Download Client)
+    * Categories: `movies`
+    * Tags: Leave blank
+
+#### Sonarr:
+
+* NZBGeek (Indexer)
+    * Categories: `SD`, `HD`
+    * Anime Categories: `SD`, `HD`, `Anime`
+    * Tags: Leave blank
+* Sabnzbd (Download Client)
+    * Category: `tv`
+    * Tags: Leave blank
+
+---
+
+### Setup Media Management root folders 
+
+Navigate to `Settings -> Media Management` and set the following root folders:
+
+Radarr:
+* Movie Folder: `/movies`
+
+Sonarr:
+* TV Folder: `/tv`
