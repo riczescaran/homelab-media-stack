@@ -1,4 +1,4 @@
-## Setting up Radarr and Sonarr
+## Self-hosted media streaming using Jellyfin + arr stack
 
 ### Pre-requisites
 - [Docker](https://docs.docker.com/get-docker/)
