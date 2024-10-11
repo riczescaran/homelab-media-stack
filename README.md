@@ -2,9 +2,18 @@
 
 This project is a docker-compose stack that includes Jellyfin, Radarr, Sonarr, and Sabnzbd. The stack is used to automate the process of downloading, organizing, and streaming media content.
 
-Why not using torrent? Usenet is a more secure and faster way to download media content. It is also less likely to be monitored by ISPs. Torrent are also known to be less reliable and slower than Usenet but are still a viable option for some users. 
+<b>Why you made this?</b> 
 
-Is this even legal? Downloading copyrighted material is illegal. However, downloading content that is not copyrighted or is in the public domain is legal. It is the user's responsibility to ensure that they are not downloading copyrighted material. Make sure to check the laws in your country before downloading any content.
+It is a fun project to work on and can be useful for people who want to have their own media server. Most of the information is available online but it is scattered and can be confusing for beginners. This project aims to simplify the process of setting up a media server using Docker. I am not responsible for any illegal activities that may be done using this project :)
+
+<b>Why not using torrent?</b>
+
+Usenet is a more secure and faster way to download media content. It is also less likely to be monitored by ISPs. Torrent are also known to be less reliable and slower than Usenet but are still a viable option for some users. 
+
+<b>Is this even legal?</b>
+
+Downloading copyrighted material is illegal. However, downloading content that is not copyrighted or is in the public domain is legal. It is the user's responsibility to ensure that they are not downloading copyrighted material. Make sure to check the laws in your country before downloading any content.
+
 
 ### Pre-requisites
 - [Docker](https://docs.docker.com/get-docker/)
