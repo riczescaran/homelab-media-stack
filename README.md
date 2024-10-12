@@ -60,6 +60,7 @@ ___
     * Sonarr: `http://localhost:8989`
     * Prowlarr: `http://localhost:9696`
     * Sabnzbd: `http://localhost:8080`
+    * Homepage: `http://localhost:3000`
 
 ---
 
@@ -137,13 +138,25 @@ ___
 
 ---
 
-
 ### Set up Jellyseerr
 
 1. Open web browser and navigate to `http://localhost:5055`
 2. Choose Jellyfin as the media server
 3. Fill in the required details and press `Next`
 4. Add radarr and sonarr services. Fill in the required details and press `Next`
+
+---
+
+### Setup Homepage
+
+1. Open web browser and navigate to `http://localhost:3000` to see if homepage is running. See the screenshot below for reference:
+
+    ![Homepage](/screenshots/homepage/homepage.png)
+2. To enable widgets, modify the `_data\homepage\services.yaml` file and set the correct IP addresses and API keys for the services. You can also add or remove services as needed. See the screenshot below for reference:
+
+    ![Homepage_Widgets](/screenshots/homepage/homepage_widgets.png)
+
+--- 
 
 ## Screenshots
 
