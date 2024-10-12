@@ -19,9 +19,10 @@ Downloading copyrighted material is illegal. However, downloading content that i
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - Usenet Provider and Indexer. The following are recommended:
-    * [NZBGeek](https://nzbgeek.info/register) - Indexer
+    * [NZBGeek](https://nzbgeek.info/register) - Indexer (Main)
+    * [NZBFinder](https://nzbfinder.ws/register) - Indexer (Secondary)
     * [Eweka](https://www.eweka.nl/en) - Provider (Main)
-    * [NewsDemon](https://www.newsdemon.com/) - Provider (Backup)
+    * [NewsDemon](https://www.newsdemon.com/) - Provider (Secondary)
 
 
 ### Optional
@@ -63,8 +64,8 @@ ___
     * Set `Temporary Download Folder` to `/incomplete-downloads`
     * Set `Complete Download Folder` to `/downloads`
 4. Navigate to `Config -> Categories`
-    * Set `movies` category folder to `/downloads` and press `Save`
-    * Set `tv` category folder to `/downloads` and press `Save`
+    * Create a new category `radarr` and press `Save`
+    * Create a new category `sonarr` and press `Save`
 
     Note: _Delete other categories if present (Not mandatory)_
 5. Navigate to `Config -> General`
@@ -82,7 +83,7 @@ ___
     * Tags: Leave blank
 4. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
     * Add API key from Sabnzbd configuration
-    * Categories: `movies`
+    * Categories: `radarr`
     * Tags: Leave blank
 
 ___
@@ -97,7 +98,7 @@ ___
     * Anime Categories: `SD`, `HD`, `Anime`
     * Tags: Leave blank
 4. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
-    * Category: `tv`
+    * Category: `sonarr`
     * Add API key from Sabnzbd configuration
     * Tags: Leave blank
 
