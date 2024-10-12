@@ -75,6 +75,7 @@ services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
+    hostname: prowlarr
     environment:
       - PUID=${PUID-1000}
       - PGID=${PGID-1000}
@@ -84,6 +85,8 @@ services:
     ports:
       - 9696:9696
     restart: unless-stopped
+    networks:
+      - default
 
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
