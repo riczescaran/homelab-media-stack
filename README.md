@@ -30,8 +30,8 @@ Downloading copyrighted material is illegal. However, downloading content that i
         * Unlimited downloads
         * Offers high retention period
 
-    > [!NOTE]  
-    > You can use any Usenet provider and indexer of your choice. It usually depends on your budget and the content you want to download.
+> [!NOTE]  
+> You can use any Usenet provider and indexer of your choice. It usually depends on your budget and the content you want to download.
 
 ### Optional
 
@@ -158,37 +158,40 @@ ___
 2. Choose `Use your Jellyfin account` and fill in the required details.
 3. Press `Sync Libraries` to sync the libraries from Jellyfin. You should see the `Movies` and `Shows` libraries listed. Tick all the libraries you want to monitor and press `Next`
 4. Add `Radarr` and `Sonarr` services with the following configurations:
-    * Radarr
-        * Default Server: Checked
-        * Server Name: Radarr
-        * Hostname or IP Address: `http://radarr`
-        * Port: 7878
-        * API Key: API key from Radarr
-        * Quality Profile: HD-1080p
-        * Root Folder: `/movies`
-        * Minimum Availability: Released
-        * Enable Scan: Checked
 
-    * Sonarr
-        * Default Server: Checked
-        * Server Name: Sonarr
-        * Hostname or IP Address: `http://sonarr`
-        * Port: 8989
-        * API Key: API key from Sonarr
-        * Series Type: Standard
-        * Quality Profile: HD-1080p
-        * Root Folder: `/tv`
-        * Language Profile: Deprecated
-        * Anime Series Type: Standard
-        * Anime Quality Profile: HD-1080p
-        * Anime Root Folder: `/tv`
-        * Anime Language Profile: Leave unchanged
-        * Season Folders: Checked
-        * Enable Scan: Checked
+   * Radarr
+     * Default Server: Checked
+     * Server Name: Radarr
+     * Hostname or IP Address: `http://radarr`
+     * Port: 7878
+     * API Key: API key from Radarr
+     * Quality Profile: HD-1080p
+     * Root Folder: `/movies`
+     * Minimum Availability: Released
+     * Enable Scan: Checked
+   
+   * Sonarr
+     * Default Server: Checked
+     * Server Name: Sonarr
+     * Hostname or IP Address: `http://sonarr`
+     * Port: 8989
+     * API Key: API key from Sonarr
+     * Series Type: Standard
+     * Quality Profile: HD-1080p
+     * Root Folder: `/tv`
+     * Language Profile: Deprecated
+     * Anime Series Type: Standard
+     * Anime Quality Profile: HD-1080p
+     * Anime Root Folder: `/tv`
+     * Anime Language Profile: Leave unchanged
+     * Season Folders: Checked
+     * Enable Scan: Checked
 
-    > [!IMPORTANT]  
-    > Press `Test` to check if the connection. Once successful, it will enable the remaining fields to be filled.
-5. Press `Next` and `Finish` to complete the setup
+> [!IMPORTANT]  
+> Press `Test` to check if the connection. Once successful, it will enable the remaining fields to be filled.
+
+
+6. Press `Next` and `Finish` to complete the setup
 
 ---
 
