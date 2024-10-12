@@ -1,0 +1,54 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services
+
+- Media:
+  - Jellyfin:
+      icon: jellyfin.png
+      href: http://192.168.0.100:8096
+      widget:
+        type: jellyfin
+        url: http://192.168.0.100:8096
+        key: apikeyapikeyapikeyapikeyapikey
+        enableBlocks: true
+        enableNowPlaying: true
+        enableUser: true
+        showEpisodeNumber: true
+        expandOneStreamToTwoRows: false
+  - Jellyseerr:
+      icon: jellyseerr.png
+      href: http://192.168.0.100:5055
+      widget:
+        type: jellyseerr
+        url: http://192.168.0.100:5055
+        key: apikeyapikeyapikeyapikeyapikey
+  - Radarr:
+      icon: radarr.png
+      href: http://192.168.0.100:7878
+      widget:
+        type: radarr
+        url: http://192.168.0.100:7878
+        key: apikeyapikeyapikeyapikeyapikey
+        enableQueue: true
+  - Sonarr:
+      icon: sonarr.png
+      href: http://192.168.0.100:8989
+      widget:
+        type: sonarr
+        url: http://192.168.0.100:8989
+        key: apikeyapikeyapikeyapikeyapikey
+        enableQueue: true
+  - Prowlarr:
+      icon: prowlarr.png
+      href: http://192.168.0.100:9696
+      widget:
+        type: prowlarr
+        url: http://192.168.0.100:9696
+        key: apikeyapikeyapikeyapikeyapikey
+  - SABnzbd:
+      icon: sabnzbd.png
+      href: http://192.168.0.100:8080
+      widget:
+        type: sabnzbd
+        url: http://192.168.0.100:8080
+        key: apikeyapikeyapikeyapikeyapikey
