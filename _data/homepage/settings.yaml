@@ -1,0 +1,18 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings
+
+layout:
+  Media:
+    icon: mdi-multimedia
+    style: row
+    columns: 4
+    useEqualHeights: true
+    
+headerStyle: clean
+cardBlur: md
+theme: dark
+color: zinc
+fiveColumns: true
+hideVersion: true
+hideErrors: true

@@ -18,12 +18,18 @@ Downloading copyrighted material is illegal. However, downloading content that i
 ### Pre-requisites
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- Usenet Provider and Indexer. The following are recommended:
-    * [NZBGeek](https://nzbgeek.info/register) - Indexer (Main)
-    * [NZBFinder](https://nzbfinder.ws/register) - Indexer (Secondary)
-    * [Eweka](https://www.eweka.nl/en) - Provider (Main)
-    * [NewsDemon](https://www.newsdemon.com/) - Provider (Secondary)
+- Usenet Provider and Indexer. The following are the services I have used:
+    * [NZBGeek](https://nzbgeek.info/register) <b>(Indexer)</b>. Why I chose this service:
+        * Affordable pricing
+        * Offers a wide range of content
+        * Offers lifetime membership
+    * [Eweka](https://www.eweka.nl/en) <b>(Provider)</b>. Why I chose this service:
+        * Affordable pricing
+        * Unlimited speed
+        * Unlimited downloads
+        * Offers high retention period
 
+    Note: _You can use any Usenet provider and indexer of your choice. It usually depends on your budget and the content you want to download._
 
 ### Optional
 
@@ -49,17 +55,19 @@ ___
     ```
 4. If all the services are running, you can access them using the following URLs:
     * Jellyfin: `http://localhost:8096`
+    * Jellyseerr: `http://localhost:5055`
     * Radarr: `http://localhost:7878`
     * Sonarr: `http://localhost:8989`
+    * Prowlarr: `http://localhost:9696`
     * Sabnzbd: `http://localhost:8080`
-    * Jellyseerr: `http://localhost:5055`
+    * Homepage: `http://localhost:3000`
 
 ---
 
 ## Setup Sabnzbd
 
 1. Open web browser and navigate to `http://localhost:8080`
-2. Fill in the required credentials using the Provider's account details
+2. Fill in the required credentials using your preferred Provider. In my case, I have used Eweka and NewsDemon.
 3. Navigate to `Config -> Folders`
     * Set `Temporary Download Folder` to `/incomplete-downloads`
     * Set `Complete Download Folder` to `/downloads`
@@ -77,14 +85,11 @@ ___
 
 1. Open web browser and navigate to `http://localhost:7878`
 2. Navigate to `Settings -> Media Management` and add root folders for movies: `/movies`
-3. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
-    * Add API key from NZBGeek account
-    * Categories: `Movies`
-    * Tags: Leave blank
-4. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
+3. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
     * Add API key from Sabnzbd configuration
     * Categories: `radarr`
     * Tags: Leave blank
+4. Navigate to `Settings -> General` to get the API key for Radarr and save it for setting up Prowlarr
 
 ___
 
@@ -92,16 +97,44 @@ ___
 
 1. Open web browser and navigate to `http://localhost:8989`
 2. Navigate to `Settings -> Media Management` and add root folders for TV shows: `/tv`
-3. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
-    * Add API key from NZBGeek account
-    * Categories: `SD`, `HD`
-    * Anime Categories: `SD`, `HD`, `Anime`
-    * Tags: Leave blank
-4. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
+3. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
     * Category: `sonarr`
     * Add API key from Sabnzbd configuration
     * Tags: Leave blank
+4. Navigate to `Settings -> General` to get the API key for Sonarr and save it for setting up Prowlarr
 
+
+---
+
+## Setup Prowlarr
+
+1. Open web browser and navigate to `http://localhost:9696`
+2. Navigate to `Settings -> Apps` and add the following applications:
+    * Radarr
+        * Name: Radarr
+        * Sync Level: Full Sync
+        * Tags: Leave blank
+        * Prowlar Server: `http://prowlarr:9696`
+        * Radarr Server: `http://radarr:7878`
+        * API Key: API key from Radarr
+        * Press `Test` to check if the connection is successful and press `Save`
+        
+    * Sonarr
+        * Name: Sonarr
+        * Sync Level: Full Sync
+        * Tags: Leave blank
+        * Prowlar Server: `http://prowlarr:9696`
+        * Sonarr Server: `http://sonarr:8989`
+        * API Key: API key from Sonarr
+        * Press `Test` to check if the connection is successful and press `Save`
+3. Navigate to `Indexers` and add your preferred indexers.  In my case, I have added NZBGeek.
+
+    Note: _Fill in the required details and press `Test` to check if the connection is successful and press `Save`_
+
+4. To verify that the indexers are synced with Radarr and Sonarr, go to `Settings -> Indexers` in both services. You should see the indexers you added in Prowlarr listed there. See the screenshots below for reference:
+
+    ![Radarr_Prowlarr](/screenshots/prowlarr/radarr_prowlarr.png)
+    ![Sonarr_Prowlarr](/screenshots/prowlarr/sonarr_prowlarr.png)
 
 ---
 
@@ -111,6 +144,19 @@ ___
 2. Choose Jellyfin as the media server
 3. Fill in the required details and press `Next`
 4. Add radarr and sonarr services. Fill in the required details and press `Next`
+
+---
+
+### Setup Homepage
+
+1. Open web browser and navigate to `http://localhost:3000` to see if homepage is running. See the screenshot below for reference:
+
+    ![Homepage](/screenshots/homepage/homepage.png)
+2. To enable widgets, modify the `_data\homepage\services.yaml` file and set the correct IP addresses and API keys for the services. You can also add or remove services as needed. See the screenshot below for reference:
+
+    ![Homepage_Widgets](/screenshots/homepage/homepage_widgets.png)
+
+--- 
 
 ## Screenshots
 
@@ -125,6 +171,9 @@ ___
 
 ### Sonarr
 ![Sonarr](/screenshots/sonarr.png)
+
+### Prowlarr
+![Prowlarr](/screenshots/prowlarr.png)
 
 ### Sabnzbd
 ![Sabnzbd](/screenshots/sabnzbd.png)
