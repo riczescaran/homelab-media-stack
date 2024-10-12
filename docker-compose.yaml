@@ -72,6 +72,19 @@ services:
     networks:
       - default
 
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID-1000}
+      - PGID=${PGID-1000}
+      - TZ=${TZ}
+    volumes:
+      - prowlarr_config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
@@ -96,6 +109,7 @@ volumes:
   radarr_config:
   sonarr_config:
   sabnzbd_config:
+  prowlarr_config:
 
 networks:
   default:

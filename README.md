@@ -77,14 +77,11 @@ ___
 
 1. Open web browser and navigate to `http://localhost:7878`
 2. Navigate to `Settings -> Media Management` and add root folders for movies: `/movies`
-3. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
-    * Add API key from NZBGeek account
-    * Categories: `Movies`
-    * Tags: Leave blank
-4. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
+3. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
     * Add API key from Sabnzbd configuration
     * Categories: `radarr`
     * Tags: Leave blank
+4. Navigate to `Settings -> General` to get the API key for Radarr and save it for setting up Prowlarr
 
 ___
 
@@ -92,18 +89,49 @@ ___
 
 1. Open web browser and navigate to `http://localhost:8989`
 2. Navigate to `Settings -> Media Management` and add root folders for TV shows: `/tv`
-3. Navigate to `Settings -> Indexers` and add NZBGeek with the following configurations:
-    * Add API key from NZBGeek account
-    * Categories: `SD`, `HD`
-    * Anime Categories: `SD`, `HD`, `Anime`
-    * Tags: Leave blank
-4. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
+3. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
     * Category: `sonarr`
     * Add API key from Sabnzbd configuration
     * Tags: Leave blank
+4. Navigate to `Settings -> General` to get the API key for Sonarr and save it for setting up Prowlarr
 
 
 ---
+
+## Setup Prowlarr
+
+1. Open web browser and navigate to `http://localhost:9696`
+2. Navigate to `Settings -> Apps` and add the following applications:
+    * Radarr
+        * Sample configuration:
+            * Name: Radarr
+            * Sync Level: Full Sync
+            * Tags: Leave blank
+            * Prowlar Server: `http://prowlarr:9696`
+            * Radarr Server: `http://radarr:7878`
+            * API Key: API key from Radarr
+            * Press `Test` to check if the connection is successful and press `Save`
+        
+    * Sonarr
+        * Sample configuration:
+            * Name: Sonarr
+            * Sync Level: Full Sync
+            * Tags: Leave blank
+            * Prowlar Server: `http://prowlarr:9696`
+            * Sonarr Server: `http://sonarr:8989`
+            * API Key: API key from Sonarr
+            * Press `Test` to check if the connection is successful and press `Save`
+3. Navigate to `Indexers` and add your preferred indexers.  In my case, I have added NZBGeek.
+
+    Note: _Fill in the required details and press `Test` to check if the connection is successful and press `Save`_
+
+4. To verify that the indexers are synced with Radarr and Sonarr, go to `Settings -> Indexers` in both services. You should see the indexers you added in Prowlarr listed there. See the screenshots below for reference:
+
+    ![Radarr_Prowlarr](/screenshots/prowlarr/radarr_prowlarr.png)
+    ![Sonarr_Prowlarr](/screenshots/prowlarr/sonarr_prowlarr.png)
+
+---
+
 
 ### Set up Jellyseerr
 
@@ -125,6 +153,9 @@ ___
 
 ### Sonarr
 ![Sonarr](/screenshots/sonarr.png)
+
+### Prowlarr
+![Prowlarr](/screenshots/prowlarr.png)
 
 ### Sabnzbd
 ![Sabnzbd](/screenshots/sabnzbd.png)
