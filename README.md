@@ -18,12 +18,18 @@ Downloading copyrighted material is illegal. However, downloading content that i
 ### Pre-requisites
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- Usenet Provider and Indexer. The following are recommended:
-    * [NZBGeek](https://nzbgeek.info/register) - Indexer (Main)
-    * [NZBFinder](https://nzbfinder.ws/register) - Indexer (Secondary)
-    * [Eweka](https://www.eweka.nl/en) - Provider (Main)
-    * [NewsDemon](https://www.newsdemon.com/) - Provider (Secondary)
+- Usenet Provider and Indexer. The following are the services I have used:
+    * [NZBGeek](https://nzbgeek.info/register) <b>(Indexer)</b>. Why I chose this service:
+        * Affordable pricing
+        * Offers a wide range of content
+        * Offers lifetime membership
+    * [Eweka](https://www.eweka.nl/en) <b>(Provider)</b>. Why I chose this service:
+        * Affordable pricing
+        * Unlimited speed
+        * Unlimited downloads
+        * Offers high retention period
 
+    Note: _You can use any Usenet provider and indexer of your choice. It usually depends on your budget and the content you want to download._
 
 ### Optional
 
@@ -49,17 +55,18 @@ ___
     ```
 4. If all the services are running, you can access them using the following URLs:
     * Jellyfin: `http://localhost:8096`
+    * Jellyseerr: `http://localhost:5055`
     * Radarr: `http://localhost:7878`
     * Sonarr: `http://localhost:8989`
+    * Prowlarr: `http://localhost:9696`
     * Sabnzbd: `http://localhost:8080`
-    * Jellyseerr: `http://localhost:5055`
 
 ---
 
 ## Setup Sabnzbd
 
 1. Open web browser and navigate to `http://localhost:8080`
-2. Fill in the required credentials using the Provider's account details
+2. Fill in the required credentials using your preferred Provider. In my case, I have used Eweka and NewsDemon.
 3. Navigate to `Config -> Folders`
     * Set `Temporary Download Folder` to `/incomplete-downloads`
     * Set `Complete Download Folder` to `/downloads`
@@ -103,24 +110,22 @@ ___
 1. Open web browser and navigate to `http://localhost:9696`
 2. Navigate to `Settings -> Apps` and add the following applications:
     * Radarr
-        * Sample configuration:
-            * Name: Radarr
-            * Sync Level: Full Sync
-            * Tags: Leave blank
-            * Prowlar Server: `http://prowlarr:9696`
-            * Radarr Server: `http://radarr:7878`
-            * API Key: API key from Radarr
-            * Press `Test` to check if the connection is successful and press `Save`
+        * Name: Radarr
+        * Sync Level: Full Sync
+        * Tags: Leave blank
+        * Prowlar Server: `http://prowlarr:9696`
+        * Radarr Server: `http://radarr:7878`
+        * API Key: API key from Radarr
+        * Press `Test` to check if the connection is successful and press `Save`
         
     * Sonarr
-        * Sample configuration:
-            * Name: Sonarr
-            * Sync Level: Full Sync
-            * Tags: Leave blank
-            * Prowlar Server: `http://prowlarr:9696`
-            * Sonarr Server: `http://sonarr:8989`
-            * API Key: API key from Sonarr
-            * Press `Test` to check if the connection is successful and press `Save`
+        * Name: Sonarr
+        * Sync Level: Full Sync
+        * Tags: Leave blank
+        * Prowlar Server: `http://prowlarr:9696`
+        * Sonarr Server: `http://sonarr:8989`
+        * API Key: API key from Sonarr
+        * Press `Test` to check if the connection is successful and press `Save`
 3. Navigate to `Indexers` and add your preferred indexers.  In my case, I have added NZBGeek.
 
     Note: _Fill in the required details and press `Test` to check if the connection is successful and press `Save`_
