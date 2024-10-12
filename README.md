@@ -18,6 +18,7 @@ Downloading copyrighted material is illegal. However, downloading content that i
 ### Pre-requisites
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
+- Set a static IP address for the machine running the services. In my case I am using IP address `192.168.0.100`.
 - Usenet Provider and Indexer. The following are the services I have used:
     * [NZBGeek](https://nzbgeek.info/register) <b>(Indexer)</b>. Why I chose this service:
         * Affordable pricing
@@ -29,7 +30,8 @@ Downloading copyrighted material is illegal. However, downloading content that i
         * Unlimited downloads
         * Offers high retention period
 
-    Note: _You can use any Usenet provider and indexer of your choice. It usually depends on your budget and the content you want to download._
+    > [!NOTE]  
+    > You can use any Usenet provider and indexer of your choice. It usually depends on your budget and the content you want to download.
 
 ### Optional
 
@@ -61,6 +63,21 @@ ___
     * Prowlarr: `http://localhost:9696`
     * Sabnzbd: `http://localhost:8080`
     * Homepage: `http://localhost:3000`
+
+---
+
+## Setup Jellyfin
+
+1. Open web browser and navigate to `http://localhost:8096`
+2. Fill in the required details in each step and press `Next`
+3. Add libraries for movies and TV shows. In my case, I have added the following libraries:
+    * Movies:
+        * Folders: `/data/movies`
+        * Display name: Movies
+    * Shows:
+        * Folders: `/data/tvshows`
+        * Display name: Shows
+4. Press `Next` until you reach the final step and press `Finish`
 
 ---
 
@@ -109,7 +126,7 @@ ___
 ## Setup Prowlarr
 
 1. Open web browser and navigate to `http://localhost:9696`
-2. Navigate to `Settings -> Apps` and add the following applications:
+2. Navigate to `Settings -> Apps` and add the following applications with the following configurations:
     * Radarr
         * Name: Radarr
         * Sync Level: Full Sync
@@ -128,9 +145,6 @@ ___
         * API Key: API key from Sonarr
         * Press `Test` to check if the connection is successful and press `Save`
 3. Navigate to `Indexers` and add your preferred indexers.  In my case, I have added NZBGeek.
-
-    Note: _Fill in the required details and press `Test` to check if the connection is successful and press `Save`_
-
 4. To verify that the indexers are synced with Radarr and Sonarr, go to `Settings -> Indexers` in both services. You should see the indexers you added in Prowlarr listed there. See the screenshots below for reference:
 
     ![Radarr_Prowlarr](/screenshots/prowlarr/radarr_prowlarr.png)
@@ -141,9 +155,40 @@ ___
 ### Set up Jellyseerr
 
 1. Open web browser and navigate to `http://localhost:5055`
-2. Choose Jellyfin as the media server
-3. Fill in the required details and press `Next`
-4. Add radarr and sonarr services. Fill in the required details and press `Next`
+2. Choose `Use your Jellyfin account` and fill in the required details.
+3. Press `Sync Libraries` to sync the libraries from Jellyfin. You should see the `Movies` and `Shows` libraries listed. Tick all the libraries you want to monitor and press `Next`
+4. Add `Radarr` and `Sonarr` services with the following configurations:
+    * Radarr
+        * Default Server: Checked
+        * Server Name: Radarr
+        * Hostname or IP Address: `http://radarr`
+        * Port: 7878
+        * API Key: API key from Radarr
+        * Quality Profile: HD-1080p
+        * Root Folder: `/movies`
+        * Minimum Availability: Released
+        * Enable Scan: Checked
+
+    * Sonarr
+        * Default Server: Checked
+        * Server Name: Sonarr
+        * Hostname or IP Address: `http://sonarr`
+        * Port: 8989
+        * API Key: API key from Sonarr
+        * Series Type: Standard
+        * Quality Profile: HD-1080p
+        * Root Folder: `/tv`
+        * Language Profile: Deprecated
+        * Anime Series Type: Standard
+        * Anime Quality Profile: HD-1080p
+        * Anime Root Folder: `/tv`
+        * Anime Language Profile: Leave unchanged
+        * Season Folders: Checked
+        * Enable Scan: Checked
+
+    > [!IMPORTANT]  
+    > Press `Test` to check if the connection. Once successful, it will enable the remaining fields to be filled.
+5. Press `Next` and `Finish` to complete the setup
 
 ---
 
