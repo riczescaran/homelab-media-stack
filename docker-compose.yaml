@@ -105,6 +105,27 @@ services:
     restart: unless-stopped
     networks:
       - default
+  
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    hostname: deluge
+    environment:
+      - PUID=${PUID-1000}
+      - PGID=${PGID-1000}
+      - TZ=${TZ}
+      - DELUGE_LOGLEVEL=error
+    volumes:
+      - deluge_config:/config
+      - ${DOWNLOADS_SOURCE_PATH}:/downloads
+    ports:
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+      - 58846:58846
+    restart: unless-stopped
+    networks:
+      - default
 
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
@@ -129,6 +150,7 @@ volumes:
   sonarr_config:
   prowlarr_config:
   sabnzbd_config:
+  deluge_config:
 
 networks:
   default:
