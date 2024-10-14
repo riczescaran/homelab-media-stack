@@ -52,3 +52,10 @@
         type: sabnzbd
         url: http://sabnzbd:8080
         key: apikeyapikeyapikeyapikeyapikey
+  - Deluge:
+      icon: deluge.png
+      href: http://192.168.0.100:8112
+      widget:
+        type: deluge
+        url: http://deluge:8112
+        password: deluge
