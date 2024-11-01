@@ -62,7 +62,8 @@ Downloading copyrighted material is illegal. However, downloading content that i
    - Radarr: `http://localhost:7878`
    - Sonarr: `http://localhost:8989`
    - Prowlarr: `http://localhost:9696`
-   - Sabnzbd: `http://localhost:8080`
+   - Sabnzbd (Usenet downloader): `http://localhost:8080`
+   - Deluge (Torrent downloader): `http://localhost:8112`
    - Homepage: `http://localhost:3000`
 
 ---
@@ -101,14 +102,26 @@ Downloading copyrighted material is illegal. However, downloading content that i
 
 ---
 
+## Set up Deluge (Optional - For torrent downloads only)
+
+1. Open web browser and navigate to `http://localhost:8112`
+2. Login using the default password: `deluge`.
+3. A pop-up will appear asking you to connect to the daemon. Press `Connect`.
+
 ## Set up Radarr
 
 1. Open web browser and navigate to `http://localhost:7878`
 2. Navigate to `Settings -> Media Management` and add root folders for movies: `/movies`
-3. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
-   - Add API key from Sabnzbd configuration
-   - Categories: `radarr`
-   - Tags: Leave blank
+3. Navigate to `Settings -> Download Client`. 
+   - Add Sabnzbd with the following configurations:
+      - Add API key from Sabnzbd configuration
+      - Categories: `radarr`
+      - Tags: Leave blank
+   - Add Deluge with the following configurations:
+      - Host: deluge
+      - Port: 8112
+      - Password: deluge
+      - Category: leave blank
 4. Navigate to `Settings -> General` to get the API key for Radarr and save it for setting up Prowlarr
 
 ---
@@ -117,10 +130,16 @@ Downloading copyrighted material is illegal. However, downloading content that i
 
 1. Open web browser and navigate to `http://localhost:8989`
 2. Navigate to `Settings -> Media Management` and add root folders for TV shows: `/tv`
-3. Navigate to `Settings -> Download Client` and add Sabnzbd with the following configurations:
-   - Category: `sonarr`
-   - Add API key from Sabnzbd configuration
-   - Tags: Leave blank
+3. Navigate to `Settings -> Download Client`.
+   - Sabnzbd with the following configurations:
+      - Add API key from Sabnzbd configuration
+      - Category: `sonarr`
+      - Tags: Leave blank
+   - Add Deluge with the following configurations:
+      - Host: deluge
+      - Port: 8112
+      - Password: deluge
+      - Category: leave blank
 4. Navigate to `Settings -> General` to get the API key for Sonarr and save it for setting up Prowlarr
 
 ---
@@ -145,7 +164,10 @@ Downloading copyrighted material is illegal. However, downloading content that i
      - Sonarr Server: `http://sonarr:8989`
      - API Key: API key from Sonarr
      - Press `Test` to check if the connection is successful and press `Save`
-3. Navigate to `Indexers` and add your preferred indexers. In my case, I have added NZBGeek.
+3. Navigate to `Indexers` and add your preferred indexers. In my case, I have added NZBGeek for Usenet and ThePirateBay and Nyaa for torrents. See the screenshots below for reference:
+
+   ![Indexers](/screenshots/prowlarr/indexers.png)
+
 4. To verify that the indexers are synced with Radarr and Sonarr, go to `Settings -> Indexers` in both services. You should see the indexers you added in Prowlarr listed there. See the screenshots below for reference:
 
    ![Radarr_Prowlarr](/screenshots/prowlarr/radarr_prowlarr.png)
@@ -234,4 +256,8 @@ Downloading copyrighted material is illegal. However, downloading content that i
   ### Sabnzbd
 
   ![Sabnzbd](/screenshots/sabnzbd.png)
+
+   ### Deluge
+
+   ![Deluge](/screenshots/deluge.png)
 </details>
